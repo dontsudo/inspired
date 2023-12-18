@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width"/>
+
+  <title>
+    {% block title %}🐾korgi blog{% endblock %}
+  </title>
+</head>
+<body>
+  <header>
+    {% include 'shared/navbar.html' %}
+  </header>
+  <div>
+    {% block content %}
+    {% endblock %}
+
+    {% block sidebar %}
+    {% endblock %}
+  </div>
+
+  <footer>
+    {% include 'shared/footer.html' %}
+  </footer>
+</body>
+</html>
