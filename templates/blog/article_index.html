@@ -1,0 +1,8 @@
+{% if aritcle_list %}
+  {% for article in article_list %}
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.body }}</p>
+  {% endfor %}
+{% else %}
+  <p>There are no articles.</p>
+{% endif %}
