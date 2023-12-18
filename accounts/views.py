@@ -24,6 +24,7 @@ class RegisterView(FormView):
 
   form_class = RegisterForm
   template_name = 'accounts/register.html'
+  success_url = '/'
 
   def form_valid(self, form: RegisterForm):
     if form.is_valid():

@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class BlogUser(AbstractUser):
-  
+
   nickname = models.CharField(_('nickname'), max_length=20)
   created_time = models.DateTimeField(_('created time'), auto_now_add=True)
   updated_time = models.DateTimeField(_('updated time'), auto_now=True)
