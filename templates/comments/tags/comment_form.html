@@ -1,0 +1,10 @@
+<div>
+  <form action="{% url 'comments:postcomment' article.pk %}" method="post">
+    {% csrf_token %}
+    <div>
+      <label for="id_body">댓글 내용</label>
+      <textarea name="body" id="id_body" cols="30" rows="10"></textarea>
+    </div>
+    <input type="submit" value="댓글 작성">
+  </form>
+</div>

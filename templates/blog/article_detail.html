@@ -10,5 +10,17 @@
 </div>
 
 {% include 'comments/tags/comment_list.html' %}
+{% if user.is_authenticated %}
+  {% include 'comments/tags/comment_form.html' %}
+{% else %}
+  <div>
+    <h3>
+      댓글을 작성하시려면 로그인이 필요합니다.
+      <a href="{% url 'members:login' %}?next={{ request.path }}" rel="nofollow">
+        로그인
+      </a>
+    </h3>
+  </div>
+{% endif %}
 
 {% endblock %}

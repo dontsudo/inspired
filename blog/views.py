@@ -15,7 +15,7 @@ class ArticleListView(ListView):
 
   def get_queryset(self):
     return Article.objects.filter(
-      created_time__lte=timezone.now()).order_by('-created_time')
+        created_time__lte=timezone.now()).order_by('-created_time')
 
 
 class IndexView(ArticleListView):

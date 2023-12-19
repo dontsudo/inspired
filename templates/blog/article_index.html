@@ -7,9 +7,12 @@
 {% if article_list %}
   {% for article in article_list %}
     <div>
-      <a href="{% url 'blog:detail' article.pk %}">
-        {{ article.title }}
-      </a>
+      <div>
+        <a href="{% url 'blog:detail' article.pk %}">
+          {{ article.title }}
+        </a>
+        <span>{{ article.views }}</span>
+      </div>
       <p>{{ article.body }}</p>
     </div>
   {% endfor %}
