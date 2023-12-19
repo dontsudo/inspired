@@ -1,6 +1,8 @@
 from django.contrib import auth
 from django.contrib.auth import REDIRECT_FIELD_NAME
-from django.views.generic import FormView
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_protect
+from django.views.generic import FormView, RedirectView
 
 from .forms import LoginForm, RegisterForm
 
@@ -11,6 +13,7 @@ class LoginView(FormView):
   success_url = '/'
   redirect_field_name = REDIRECT_FIELD_NAME
 
+  @method_decorator(csrf_protect)
   def form_valid(self, form: LoginForm):
     if form.is_valid():
       username = form.cleaned_data['username']
@@ -31,6 +34,7 @@ class RegisterView(FormView):
   template_name = 'accounts/register.html'
   success_url = '/'
 
+  @method_decorator(csrf_protect)
   def form_valid(self, form: RegisterForm):
     if form.is_valid():
       form.save()  # save user
@@ -38,3 +42,11 @@ class RegisterView(FormView):
       # TODO: send email here
 
     return super().form_valid(form)
+
+
+class LogoutView(RedirectView):
+  url = '/accounts/login/'
+
+  def get(self, request, *args, **kwargs):
+    auth.logout(request)
+    return super(LogoutView, self).get(request, *args, **kwargs)
