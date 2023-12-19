@@ -68,6 +68,17 @@ DATABASES = {
     }
 }
 
+# Cache
+# https://docs.djangoproject.com/en/4.2/topics/cache/
+# - FOR DB, `python manage.py createcachetable` to create table
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'TIMEOUT': 60 * 60 * 3,  # 3 hours
+        'LOCATION': 'inspired_cache',
+    }
+}
+
 # 🐈 Set Custom user model
 AUTH_USER_MODEL = "accounts.BlogUser"
 
@@ -98,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 

@@ -34,5 +34,4 @@ class CommentPostView(FormView):
 
     comment.save(True)
 
-    return HttpResponseRedirect(
-        reverse('blog:detail', args=(article_id,)))
+    return HttpResponseRedirect(reverse('blog:detail', args=(article_id,)))
