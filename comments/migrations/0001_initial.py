@@ -6,52 +6,52 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-    initial = True
+  initial = True
 
-    dependencies = [
-        ("blog", "0001_initial"),
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-    ]
+  dependencies = [
+      ("blog", "0001_initial"),
+      migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+  ]
 
-    operations = [
-        migrations.CreateModel(
-            name="Comment",
-            fields=[
-                ("id", models.AutoField(primary_key=True, serialize=False)),
-                ("created_time", models.DateTimeField(auto_now_add=True)),
-                ("updated_time", models.DateTimeField(auto_now=True)),
-                ("body", models.TextField(max_length=300, verbose_name="body")),
-                (
-                    "article",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE,
-                        to="blog.article",
-                        verbose_name="article",
-                    ),
-                ),
-                (
-                    "author",
-                    models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE,
-                        to=settings.AUTH_USER_MODEL,
-                        verbose_name="author",
-                    ),
-                ),
-                (
-                    "parent_comment",
-                    models.ForeignKey(
-                        blank=True,
-                        null=True,
-                        on_delete=django.db.models.deletion.CASCADE,
-                        to="comments.comment",
-                        verbose_name="parent comment",
-                    ),
-                ),
-            ],
-            options={
-                "verbose_name": "comment",
-                "verbose_name_plural": "comments",
-                "ordering": ["-id"],
-            },
-        ),
-    ]
+  operations = [
+      migrations.CreateModel(
+          name="Comment",
+          fields=[
+              ("id", models.AutoField(primary_key=True, serialize=False)),
+              ("created_time", models.DateTimeField(auto_now_add=True)),
+              ("updated_time", models.DateTimeField(auto_now=True)),
+              ("body", models.TextField(max_length=300, verbose_name="body")),
+              (
+                  "article",
+                  models.ForeignKey(
+                      on_delete=django.db.models.deletion.CASCADE,
+                      to="blog.article",
+                      verbose_name="article",
+                  ),
+              ),
+              (
+                  "author",
+                  models.ForeignKey(
+                      on_delete=django.db.models.deletion.CASCADE,
+                      to=settings.AUTH_USER_MODEL,
+                      verbose_name="author",
+                  ),
+              ),
+              (
+                  "parent_comment",
+                  models.ForeignKey(
+                      blank=True,
+                      null=True,
+                      on_delete=django.db.models.deletion.CASCADE,
+                      to="comments.comment",
+                      verbose_name="parent comment",
+                  ),
+              ),
+          ],
+          options={
+              "verbose_name": "comment",
+              "verbose_name_plural": "comments",
+              "ordering": ["-id"],
+          },
+      ),
+  ]

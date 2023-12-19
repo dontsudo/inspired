@@ -12,6 +12,13 @@
 </head>
 <body>
   <header>
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'accounts:logout' %}">Log out</a>
+    {% else %}
+      <a href="{% url 'accounts:login' %}">Log in</a>
+      |
+      <a href="{% url 'accounts:register' %}">Register</a>
+    {% endif %}
     {% include 'shared/nav.html' %}
   </header>
   <div>

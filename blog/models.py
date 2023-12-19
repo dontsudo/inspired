@@ -20,3 +20,7 @@ class Article(BaseModel):
     ordering = ['-created_time']
     verbose_name = _('article')
     verbose_name_plural = _('articles')
+
+  def viewed(self):
+    self.views += 1
+    self.save(update_fields=['views'])

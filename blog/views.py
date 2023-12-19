@@ -1,6 +1,4 @@
-import time
-
-from typing import Any
+from django.db.models.base import Model as Model
 from django.db.models.query import QuerySet
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
@@ -15,11 +13,9 @@ class ArticleListView(ListView):
   context_object_name = 'article_list'
   template_name = 'blog/article_index.html'
 
-  def get_queryset(self) -> QuerySet[Any]:
-    time.sleep(3)
-
+  def get_queryset(self):
     return Article.objects.filter(
-        created_time__lte=timezone.now()).order_by('-created_time')
+      created_time__lte=timezone.now()).order_by('-created_time')
 
 
 class IndexView(ArticleListView):
@@ -33,3 +29,17 @@ class ArticleDetailView(DetailView):
   model = Article
   context_object_name = 'article'
   template_name = 'blog/article_detail.html'
+
+  def get_object(self, queryset=None):
+    obj = super().get_object(queryset)
+    obj.viewed()
+    self.object = obj
+    return obj
+
+  def get_context_data(self, **kwargs):
+    article_comments = self.object.comment_set.all()
+
+    kwargs['article_comments'] = article_comments
+    kwargs['comment_count'] = article_comments.count()
+
+    return super().get_context_data(**kwargs)

@@ -4,14 +4,6 @@
 
 {% block content %}
 
-{% if request.user.is_authenticated %}
-  <h2>Hi {{ request.user.username }}!</h2>
-{% else %}
-  <a href="{% url 'accounts:login' %}">Log in</a> 
-  | 
-  <a href="{% url 'accounts:register' %}">Register</a>
-{% endif %}
-
 {% if article_list %}
   {% for article in article_list %}
     <div>

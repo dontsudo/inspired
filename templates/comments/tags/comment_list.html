@@ -1,0 +1,18 @@
+<p>here is comment list</p>
+
+<section>
+  <p>
+    {{ comment_count }}
+  </p>
+
+  {% if article_comments %}
+    <ul>
+      {% for comment in article_comments %}
+        <li>
+          <p>{{ comment.body }}</p>
+          <p>{{ comment.created_time }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</section>
