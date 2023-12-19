@@ -1,5 +1,4 @@
-{% load static %}
-<!DOCTYPE html>
+<!DOCTYPE html>{% load static %}
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,6 +7,8 @@
   <title>
     {% block title %}🐾korgi blog{% endblock %}
   </title>
+
+  <link rel="stylesheet" href="{% static 'css/nprogress.css' %}">
 </head>
 <body>
   <header>
@@ -25,6 +26,8 @@
     {% include 'shared/footer.html' %}
   </footer>
 
-  <script src="{% static 'js/blog.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/nprogress.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/blog.js' %}"></script>
 </body>
 </html>
