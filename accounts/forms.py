@@ -7,7 +7,6 @@ from django.utils.translation import gettext_lazy as _
 
 
 class LoginForm(AuthenticationForm):
-
   def __init__(self, *args, **kwargs):
     super(LoginForm, self).__init__(*args, **kwargs)
 
@@ -22,7 +21,6 @@ class LoginForm(AuthenticationForm):
 
 
 class RegisterForm(UserCreationForm):
-
   def __init__(self, *args, **kwargs):
     super(RegisterForm, self).__init__(*args, **kwargs)
 

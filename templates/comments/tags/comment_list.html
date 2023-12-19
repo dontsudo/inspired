@@ -10,7 +10,10 @@
       {% for comment in article_comments %}
         <li>
           <p>{{ comment.body }}</p>
-          <p>{{ comment.created_time }}</p>
+          <div>
+            <p>작성자: {{ comment.author }}</p>
+            <p>{{ comment.created_time }}</p>
+          </div>
         </li>
       {% endfor %}
     </ul>

@@ -19,7 +19,6 @@ class LoginView(FormView):
 
   def form_valid(self, form: LoginForm):
     if form.is_valid():
-      print('🤔 form is valid')
       username = form.cleaned_data['username']
       password = form.cleaned_data['password']
       user = auth.authenticate(self.request,

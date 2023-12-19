@@ -1,3 +1,7 @@
+{% extends 'shared/base_accounts.html' %}
+
+{% block content %}
+
 <div>
   <h2>Create Your Account</h2>
   
@@ -18,3 +22,5 @@
     Already have an account? <a href="{% url 'accounts:login' %}">Login</a>
   </p>
 </div>
+
+{% endblock %}
