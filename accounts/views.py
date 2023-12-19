@@ -14,8 +14,12 @@ class LoginView(FormView):
   redirect_field_name = REDIRECT_FIELD_NAME
 
   @method_decorator(csrf_protect)
+  def dispatch(self, request, *args, **kwargs):
+    return super().dispatch(request, *args, **kwargs)
+
   def form_valid(self, form: LoginForm):
     if form.is_valid():
+      print('🤔 form is valid')
       username = form.cleaned_data['username']
       password = form.cleaned_data['password']
       user = auth.authenticate(self.request,
