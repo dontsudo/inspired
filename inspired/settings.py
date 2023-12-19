@@ -37,7 +37,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'korgiblog.urls'
+ROOT_URLCONF = 'inspired.urls'
 
 TEMPLATES = [
     {
@@ -55,7 +55,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'korgiblog.wsgi.application'
+WSGI_APPLICATION = 'inspired.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -108,6 +108,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# 🐈 Set static files (CSS, JavaScript, Images)
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
     '/var/www/static/',
