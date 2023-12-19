@@ -15,14 +15,16 @@ class LoginView(FormView):
     if form.is_valid():
       username = form.cleaned_data['username']
       password = form.cleaned_data['password']
-      user = auth.authenticate(self.request, username=username, password=password)
+      user = auth.authenticate(self.request,
+                               username=username,
+                               password=password)
 
       if user is not None:
         auth.login(self.request, user)
         return super().form_valid(form)
 
     return super().form_invalid(form)
-  
+
 
 class RegisterView(FormView):
   form_class = RegisterForm

@@ -11,7 +11,7 @@
 </head>
 <body>
   <header>
-    {% include 'shared/navbar.html' %}
+    {% include 'shared/nav.html' %}
   </header>
   <div>
     {% block content %}
@@ -24,5 +24,7 @@
   <footer>
     {% include 'shared/footer.html' %}
   </footer>
+
+  <script src="{% static 'js/blog.js' %}"></script>
 </body>
 </html>
